@@ -53,7 +53,7 @@
 <div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="{{route('events.store')}}" method="POST">
+      <form action="{{route('event.store')}}" method="POST">
          @csrf
          <div class="modal-header">
             <h5 class="modal-title" id="addEventModalLabel">Add New Event</h5>
@@ -97,7 +97,7 @@
 <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="POST">
+      <form method="POST" action="{{route('event.update', $event->id)}}">
          @csrf
          @method('PUT')
          <div class="modal-header">
@@ -155,7 +155,7 @@
         const reminder_emails = button.getAttribute('data-reminder_emails');
 
         const form = editEventModal.querySelector('form');
-        form.action = '/events/' + id;
+        form.action = "{{ route('event.update', ':id') }}".replace(':id', id);
 
         form.querySelector('#edit_title').value = title;
         form.querySelector('#edit_description').value = description;

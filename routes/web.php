@@ -4,4 +4,5 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 
 Route::get('/', [EventController::class, 'index'])->name('events.index');
-Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
+Route::put('/event/update/{id}', [EventController::class, 'update'])->name('event.update');
