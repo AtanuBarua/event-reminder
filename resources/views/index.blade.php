@@ -38,7 +38,7 @@
                 data-reminder_emails="{{ $event->reminder_emails }}">
                 Edit
              </button>
-             <form action="" method="POST" class="d-inline"
+             <form action="{{route('event.delete', $event->id)}}" method="POST" class="d-inline"
                    onsubmit="return confirm('Are you sure you want to delete this event?');">
                 @csrf
                 @method('DELETE')
