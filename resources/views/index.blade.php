@@ -35,7 +35,7 @@
                 data-start_date="{{ date('Y-m-d\TH:i', strtotime($event->start_date)) }}"
                 data-end_date="{{ date('Y-m-d\TH:i', strtotime($event->end_date)) }}"
                 data-reminder_at="{{ $event->reminder_at ? date('Y-m-d\TH:i', strtotime($event->reminder_at)) : '' }}"
-                data-reminder_emails="{{ $event->reminder_emails }}">
+                data-reminder_emails="{{ implode(',', $event->reminder_emails) }}">
                 Edit
              </button>
              <form action="{{route('event.delete', $event->id)}}" method="POST" class="d-inline"

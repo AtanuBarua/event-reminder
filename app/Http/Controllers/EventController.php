@@ -24,6 +24,11 @@ class EventController extends Controller
             'reminder_emails' => 'nullable|string',
         ]);
 
+        if (!empty($validated['reminder_emails'])) {
+            $validated['reminder_emails'] = explode(',', $validated['reminder_emails']);
+            $validated['reminder_emails'] = array_map('trim', $validated['reminder_emails']);
+        }
+
         try {
             Event::create($validated);
             return redirect()->route('events.index')->with('success', 'Event created successfully!');

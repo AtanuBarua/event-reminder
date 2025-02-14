@@ -9,6 +9,13 @@ class Event extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date'   => 'datetime',
+        'reminder_at' => 'datetime',
+        'reminder_emails' => 'array',
+    ];
+
     protected static function boot() {
         parent::boot();
 
